@@ -1,6 +1,7 @@
 <template>
   <div class="btn-box">
     <button @click="html2canvasExport">html2canvas</button>
+    <button @click="canvgExport">canvg</button>
   </div>
   <div id="box">
     <img
@@ -14,6 +15,7 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import html2canvas from 'html2canvas'
+import Canvg from 'canvg'
 
 export default {
   name: 'App',
@@ -29,6 +31,22 @@ export default {
         document.body.appendChild(canvas)
         console.log(canvas.toDataURL())
       })
+    },
+    async canvgExport() {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      
+      //通过from来启动canvg引擎
+      const v = await Canvg.fromString(ctx, `<svg width="320" height="320" xmlns="http://www.w3.org/2000/svg">
+  <g> 
+    <text font-family="microsoft yahei" font-size="120" y="160" x="160">马</text>
+    <animateTransform attributeName="transform" begin="0s" dur="10s" type="rotate" from="0 160 160" to="360 160 160" repeatCount="indefinite"/>
+  </g>
+</svg>`);
+
+      // Start SVG rendering with animations and mouse handling.
+      v.start();
+      document.body.appendChild(canvas)
     }
   }
 }
