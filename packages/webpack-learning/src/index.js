@@ -1,11 +1,16 @@
-import {a} from './test'
+import './index.css' 
+import me from 'images/25174576.jpg'
 
-let dom = document.createElement('button')
+const dom = document.createElement('button')
 dom.textContent = '点我'
 dom.addEventListener('click',()=>{
-  import('./test').then(res=>{
+  import(/* webpackChunkName: "test" */'./test').then(res=>{
     console.log(res.a)
     console.log(res.default)
   })
 },false)
 document.body.appendChild(dom)
+
+const image = document.createElement('img')
+image.src = me
+document.body.appendChild(image)
