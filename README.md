@@ -1,1 +1,1 @@
-# screen-short-learning
+# self-learning-and-practice
