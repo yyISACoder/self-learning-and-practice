@@ -1,41 +1,42 @@
 import './public-path'
 import Vue from 'vue'
+import Home from './home.vue'
 import App from './App.vue'
+import VueRouter from "vue-router"
+import { registerMicroApps, start } from 'qiankun'
 
+Vue.use(VueRouter)
 Vue.config.productionTip = false
 
-let router = null;
-let instance = null;
-function render(props = {}) {
-  const { container } = props;
-  router = new VueRouter({
-    base: window.__POWERED_BY_QIANKUN__ ? '/app-vue/' : '/',
-    mode: 'history',
-    routes,
-  });
+const router = new VueRouter({
+  mode: "history",
+  routes: [
+    {
+      /**
+       * path: 路径为 / 时触发该路由规则
+       * name: 路由的 name 为 Home
+       * component: 触发路由时加载 `Home` 组件
+       */
+      path: "/",
+      name: "Home",
+      component: Home,
+    },
+  ]
+})
 
-  instance = new Vue({
-    router,
-    store,
-    render: (h) => h(App),
-  }).$mount(container ? container.querySelector('#app') : '#app');
-}
+new Vue({
+  router,
+  render: h => h(App),
+}).$mount('#root')
 
-// 独立运行时
-if (!window.__POWERED_BY_QIANKUN__) {
-  render();
-}
 
-export async function bootstrap() {
-  console.log('[vue] vue app bootstraped');
-}
-export async function mount(props) {
-  console.log('[vue] props from main framework', props);
-  render(props);
-}
-export async function unmount() {
-  instance.$destroy();
-  instance.$el.innerHTML = '';
-  instance = null;
-  router = null;
-}
+registerMicroApps([
+  {
+    name: 'microApp',
+    entry: 'http://carlblog.site/test/',
+    container: '#container',
+    activeRule: '/micro-app',
+  }
+])
+// 启动 qiankun
+start()

@@ -12,7 +12,12 @@ module.exports = {
     filename: '[name].[contenthash].js',
     chunkFilename: '[name].js',
     path: path.resolve(__dirname, 'build'),
-    publicPath: '/'
+    publicPath: '/test',
+    library: {
+      name: 'microApp',
+      type: 'umd'
+    },
+    //jsonpFunction: `webpackJsonp_microApp`,
   },
   module: {
     rules: [
