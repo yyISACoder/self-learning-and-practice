@@ -3,14 +3,27 @@
   "version": "1.0.0",
   "description": "用于学习研究AST相关知识",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "webpack": "webpack",
+    "babel": "babel source.js -o target.js"
   },
   "author": "yinyue",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
     "@babel/generator": "^7.15.0",
     "@babel/parser": "^7.15.3",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
     "@babel/traverse": "^7.15.0",
     "@babel/types": "^7.15.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@babel/runtime": "^7.15.3",
+    "core-js": "3",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
   }
 }
