@@ -1,4 +1,4 @@
-import {a} from './source2.js'
+import "@babel/polyfill"
 
 Array.isArray(params)
 
