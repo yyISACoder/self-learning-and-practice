@@ -1,0 +1,14 @@
+{
+  "name": "yy-clear-babel-plugin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "clear": "node test.js"
+  },
+  "author": "yinyue",
+  "description": "babel插件，用于清除项目中的debug，log相关代码",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.15.5"
+  }
+}
