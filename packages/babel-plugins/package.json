@@ -1,10 +1,11 @@
 {
   "name": "yy-clear-babel-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "scripts": {
     "clear": "node test.js"
   },
+  "keywords": ["babel-plugin","console","debugger"],
   "author": "yinyue",
   "description": "babel插件，用于清除项目中的debug，log相关代码",
   "license": "ISC",
