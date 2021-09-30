@@ -30,6 +30,9 @@ const inquirerFunc = targetDir => {
       case 'Vue2': 
         downloadTemplate(targetDir,'yyISACoder/vue2-custom-scaffold#main')
         break
+      case '【Typescript版】Vue2': 
+        downloadTemplate(targetDir,'yyISACoder/vue2-ts-custom-scaffold#main')
+        break
       case 'Vue3': 
         downloadTemplate(targetDir,'yyISACoder/vue3-custom-scaffold#main')
         break
