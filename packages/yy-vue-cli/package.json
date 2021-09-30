@@ -1,6 +1,6 @@
 {
   "name": "yy-vue-cli-tool",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "用于构建Vue脚手架的cli工具",
   "main": "vue-cli.js",
   "bin": "vue-cli.js",

@@ -21,6 +21,7 @@ const inquirerFunc = targetDir => {
       default: 'Vue2',
       choices: [
         'Vue2',
+        '【TS版】Vue2',
         'Vue3'
       ]
     }
@@ -30,7 +31,7 @@ const inquirerFunc = targetDir => {
       case 'Vue2': 
         downloadTemplate(targetDir,'yyISACoder/vue2-custom-scaffold#main')
         break
-      case '【Typescript版】Vue2': 
+      case '【TS版】Vue2': 
         downloadTemplate(targetDir,'yyISACoder/vue2-ts-custom-scaffold#main')
         break
       case 'Vue3': 
