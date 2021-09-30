@@ -1,12 +1,13 @@
 {
   "name": "yy-vue-cli-tool",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "用于构建Vue脚手架的cli工具",
   "main": "vue-cli.js",
   "bin": "vue-cli.js",
   "keywords": ["vue","cli","scaffold"],
   "author": "Carl",
   "license": "ISC",
+  "homepage": "https://github.com/yyISACoder/self-learning-and-practice/tree/master/packages/yy-vue-cli",
   "dependencies": {
     "chalk": "^4.1.2",
     "commander": "^8.2.0",
