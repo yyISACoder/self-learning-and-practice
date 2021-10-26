@@ -6,7 +6,7 @@
 * 【ts版】Vue2
 * 【js版】Vue3
 * 【ts版】Vue3
-* 
+
 后面会陆续支持React类型的脚手架
 
 如果你在使用过程中有任何不爽的地方，那么欢迎提 [issue](https://github.com/yyISACoder/self-learning-and-practice/tree/master/packages/yy-web-scaffold-cli) ! ^_^
