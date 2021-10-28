@@ -1,5 +1,10 @@
 用于构建web开发脚手架的cli工具，支持的脚手架类型包括目前主流的Vue和React
 
+使用方式:
+
+1. `npm install yy-web-scaffold-cli -g`
+2. `yy-web-scaffold-cli create <your project name>`
+
 支持类型如下：
 
 * 【js版】Vue2

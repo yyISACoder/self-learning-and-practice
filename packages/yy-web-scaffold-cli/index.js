@@ -72,11 +72,11 @@ const downloadTemplate = (targetDir,repo) => {
 program.version(packageJson.version)
 
 program
-  .command('create <app-name>')
+  .command('create <project-name>')
   .description('创建项目')
   .option('-f, --force', '先删除已存在的同名目录，再创建项目')
-  .action((appName, options) => {
-    const targetDir = path.join(cwd,appName)
+  .action((projectName, options) => {
+    const targetDir = path.join(cwd,projectName)
     if(fs.existsSync(targetDir)) {
       if(options.force) {
         const spinner = ora('删除目录中，请稍后\r\n')
