@@ -23,7 +23,8 @@ const inquirerFunc = targetDir => {
         'Vue2',
         '【TS版】Vue2',
         'Vue3',
-        '【TS版】Vue3'
+        '【TS版】Vue3',
+        '【js版】React17'
       ]
     }
   ])
@@ -40,6 +41,9 @@ const inquirerFunc = targetDir => {
         break
       case '【TS版】Vue3': 
         downloadTemplate(targetDir,'yyISACoder/vue3-ts-custom-scaffold#main')
+        break
+      case '【js版】React17': 
+        downloadTemplate(targetDir,'yyISACoder/react17-custom-scaffold#main')
         break
       default:
         downloadTemplate(targetDir,'yyISACoder/vue2-custom-scaffold#main')
