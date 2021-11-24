@@ -24,7 +24,10 @@ const inquirerFunc = targetDir => {
         '【TS版】Vue2',
         'Vue3',
         '【TS版】Vue3',
-        '【js版】React17'
+        'React16',
+        '【TS版】React16',
+        'React17',
+        '【TS版】React17',
       ]
     }
   ])
@@ -42,8 +45,14 @@ const inquirerFunc = targetDir => {
       case '【TS版】Vue3': 
         downloadTemplate(targetDir,'yyISACoder/vue3-ts-custom-scaffold#main')
         break
-      case '【js版】React17': 
+      case 'React16': 
+        downloadTemplate(targetDir,'yyISACoder/react16-custom-scaffold#main')
+      case '【TS版】React16': 
+        downloadTemplate(targetDir,'yyISACoder/react16-ts-custom-scaffold#main')
+      case 'React17': 
         downloadTemplate(targetDir,'yyISACoder/react17-custom-scaffold#main')
+      case '【TS版】React17': 
+        downloadTemplate(targetDir,'yyISACoder/react17-ts-custom-scaffold#main')
         break
       default:
         downloadTemplate(targetDir,'yyISACoder/vue2-custom-scaffold#main')
