@@ -32,7 +32,7 @@ const inquirerFunc = targetDir => {
     }
   ])
   .then(answers => {
-    switch(answers[0]) {
+    switch(answers.template) {
       case 'Vue2': 
         downloadTemplate(targetDir,'yyISACoder/vue2-custom-scaffold#main')
         break
