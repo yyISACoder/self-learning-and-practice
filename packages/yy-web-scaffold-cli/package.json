@@ -1,6 +1,6 @@
 {
   "name": "yy-web-scaffold-cli",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "用于构建web开发脚手架的cli工具，脚手架类型包括目前主流的Vue和React",
   "main": "index.js",
   "bin": "index.js",
