@@ -19,3 +19,5 @@
 * 【ts版】React17
 
 如果你对该工具有任何建议，那么欢迎提 [issue](https://github.com/yyISACoder/self-learning-and-practice/tree/master/packages/yy-web-scaffold-cli) ! ^_^
+
+最后的最后，如果你喜欢这个项目，请给一个 star⭐ 吧！
