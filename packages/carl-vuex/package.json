@@ -1,0 +1,30 @@
+{
+  "name": "carl-vuex",
+  "version": "1.0.10",
+  "main": "dist/main.js",
+  "keywords": [
+    "vue",
+    "vuex"
+  ],
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "yinyue",
+  "description": "基于vue2开发的自定义vuex插件",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/runtime": "^7.20.1",
+    "@babel/runtime-corejs3": "^7.20.1",
+    "babel-loader": "^9.1.0",
+    "cache-loader": "^4.1.0",
+    "thread-loader": "^3.0.4",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.0"
+  }
+}
