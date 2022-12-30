@@ -3,6 +3,8 @@
   "name": "study-and-practice",
   "version": "1.0.0",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "description": "个人实验室-----该仓库用于学习各种技术并将其实际运用，从而领会其中的精髓"
 }
