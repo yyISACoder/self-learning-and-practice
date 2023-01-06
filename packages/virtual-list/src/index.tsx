@@ -1,7 +1,14 @@
-import React, { useEffect, useMemo, useState, useCallback } from 'react'
+import React, { useEffect, useMemo, useState, useCallback, FC } from 'react'
 import styles from './index.less'
 
-const VirtualList = props => {
+interface IVirtualListProps {
+  dataList: any[]
+  itemHeight?: number
+  containerHeight?: number
+  containerWidth?: number
+}
+
+const VirtualList: FC<IVirtualListProps> = props => {
   const {
     dataList = [],
     itemHeight = 100,
