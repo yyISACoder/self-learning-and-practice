@@ -7,3 +7,4 @@ interface IVirtualListProps {
 }
 declare const VirtualList: FC<IVirtualListProps>;
 export default VirtualList;
+//# sourceMappingURL=index.d.ts.map

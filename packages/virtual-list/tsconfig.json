@@ -5,6 +5,7 @@
     "outDir": "./dist",
     "emitDeclarationOnly": true,
     "declaration": true,
+    "declarationMap": true,
     "noImplicitAny": false,
     "jsx": "react",
     "moduleResolution": "node",
