@@ -1,10 +1,15 @@
 {
   "name": "yy-web-scaffold-cli",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "用于构建web开发脚手架的cli工具，脚手架类型包括目前主流的Vue和React",
   "main": "index.js",
   "bin": "index.js",
-  "keywords": ["vue","react","cli","scaffold"],
+  "keywords": [
+    "vue",
+    "react",
+    "cli",
+    "scaffold"
+  ],
   "author": "Carl",
   "license": "ISC",
   "homepage": "https://github.com/yyISACoder/self-learning-and-practice/tree/main/packages/yy-web-scaffold-cli",
