@@ -28,7 +28,7 @@ const inquirerFunc = targetDir => {
           '【TS版】React16',
           'React17',
           '【TS版】React17',
-          'lerna脚手架',
+          'lerna-scaffold',
           'cra-rewired'
         ]
       }
@@ -62,8 +62,8 @@ const inquirerFunc = targetDir => {
             'yyISACoder/react17-ts-custom-scaffold#main'
           )
           break
-        case 'lerna脚手架':
-          downloadTemplate(targetDir, 'yyISACoder/lerna-cra#main')
+        case 'lerna-scaffold':
+          downloadTemplate(targetDir, 'yyISACoder/lerna-scaffold#main')
         case 'cra-rewired':
           downloadTemplate(targetDir, 'yyISACoder/cra-rewired#main')
         default:
