@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>全景图</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+    <script src="./three.js"></script>
+    <script src="./OrbitControls.js"></script>
+  </head>
+  <body>
+    <script>
+      const scene = new THREE.Scene();
+      // 加载背景
+      const textureLoader = new THREE.TextureLoader();
+      const textureEquirec = textureLoader.load("./img/bg1.jpg");
+      textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
+      textureEquirec.colorSpace = THREE.SRGBColorSpace;
+      scene.background = textureEquirec;
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+    </script>
+  </body>
+</html>
