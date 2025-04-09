@@ -7,11 +7,11 @@ import OSM from 'ol/source/OSM'
 import BingMaps from 'ol/source/BingMaps'
 import XYZ from 'ol/source/XYZ'
 import VectorSource from 'ol/source/Vector'
-import { fromLonLat } from 'ol/proj'
+import { fromLonLat, transform } from 'ol/proj'
 import VectorLayer from 'ol/layer/Vector'
 import { GeoJSON } from 'ol/format'
 import { LineString } from 'ol/geom'
-import { Style, Stroke } from 'ol/style'
+import { Style, Stroke, Circle, Fill } from 'ol/style'
 import AMapLoader from '@amap/amap-jsapi-loader'
 
 let mapInstance
@@ -22,9 +22,9 @@ const apiKey_gd_js = '809705cb81ca6b60e5e56f4db505e275'
 const apiKey_gd_web = 'b2ea870bf7fbc6c05e8c847114d13ffb'
 
 onMounted(async () => {
-  await initGDMap()
+  //await initGDMap()
   initMap()
-  loadTrafficData()
+  //loadTrafficData()
 })
 
 async function initGDMap() {
@@ -39,71 +39,100 @@ function initMap() {
   mapInstance = new Map({
     target: 'mapContainer',
     layers: [
-      new Tile({
-        source: new XYZ({
-          wrapX: false,
-          tileUrlFunction: function (tileCoord) {
-            const z = tileCoord[0]
-            const x = tileCoord[1]
-            const y = tileCoord[2]
-            if (y === undefined) return ''
-            const y_tms = Math.pow(2, z) - 1 - y // TMS行号反转
-            return (
-              'http://t0.tianditu.gov.cn/ter_w/wmts?' +
-              'SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0' +
-              '&LAYER=ter&STYLE=default&TILEMATRIXSET=w' +
-              '&FORMAT=image/png' +
-              '&TILEMATRIX=' +
-              z +
-              '&TILEROW=' +
-              y +
-              '&TILECOL=' +
-              x +
-              '&tk=' +
-              apiKey_td
-            )
-          }
-        })
-      }),
-      new Tile({
-        opacity: 0.7,
-        source: new XYZ({
-          wrapX: false,
-          tileUrlFunction: function (tileCoord) {
-            debugger
-            var z = tileCoord[0]
-            var x = tileCoord[1]
-            var y = tileCoord[2]
-            if (y === undefined) return ''
-            var y_tms = Math.pow(2, z) - 1 - y
-            return (
-              'http://t0.tianditu.gov.cn/img_w/wmts?' +
-              'SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0' +
-              '&LAYER=img&STYLE=default&TILEMATRIXSET=w' +
-              '&FORMAT=image/png' +
-              '&TILEMATRIX=' +
-              z +
-              '&TILEROW=' +
-              y +
-              '&TILECOL=' +
-              x +
-              '&tk=' +
-              apiKey_td
-            )
-          }
-        })
-      }),
+      // new Tile({
+      //   source: new XYZ({
+      //     wrapX: false,
+      //     projection: 'EPSG:3857',
+      //     tileUrlFunction: function (tileCoord) {
+      //       const z = tileCoord[0]
+      //       const x = tileCoord[1]
+      //       const y = tileCoord[2]
+      //       if (y === undefined) return ''
+      //       const y_tms = Math.pow(2, z) - 1 - y // TMS行号反转
+      //       return (
+      //         'http://t0.tianditu.gov.cn/ter_w/wmts?' +
+      //         'SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0' +
+      //         '&LAYER=ter&STYLE=default&TILEMATRIXSET=w' +
+      //         '&FORMAT=image/png' +
+      //         '&TILEMATRIX=' +
+      //         z +
+      //         '&TILEROW=' +
+      //         y +
+      //         '&TILECOL=' +
+      //         x +
+      //         '&tk=' +
+      //         apiKey_td
+      //       )
+      //     }
+      //   })
+      // }),
       new VectorLayer({
+        opacity: 1,
         source: new VectorSource({
-          url: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson',
+          url: '../assets/json/中华人民共和国.json', // GeoJSON文件路径
           format: new GeoJSON()
         })
       })
+      // new Tile({
+      //   source: new XYZ({
+      //     wrapX: false,
+      //     projection: 'EPSG:3857',
+      //     tileUrlFunction: function (tileCoord) {
+      //       const z = tileCoord[0]
+      //       const x = tileCoord[1]
+      //       const y = tileCoord[2]
+      //       if (y === undefined) return ''
+      //       const y_tms = Math.pow(2, z) - 1 - y // TMS行号反转
+      //       return (
+      //         'http://t0.tianditu.gov.cn/ter_w/wmts?' +
+      //         'SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0' +
+      //         '&LAYER=ter&STYLE=default&TILEMATRIXSET=w' +
+      //         '&FORMAT=image/png' +
+      //         '&TILEMATRIX=' +
+      //         z +
+      //         '&TILEROW=' +
+      //         y +
+      //         '&TILECOL=' +
+      //         x +
+      //         '&tk=' +
+      //         apiKey_td
+      //       )
+      //     }
+      //   })
+      // }),
+      // new Tile({
+      //   opacity: 0.7,
+      //   source: new XYZ({
+      //     wrapX: false,
+      //     projection: 'EPSG:3857',
+      //     tileUrlFunction: function (tileCoord) {
+      //       debugger
+      //       var z = tileCoord[0]
+      //       var x = tileCoord[1]
+      //       var y = tileCoord[2]
+      //       if (y === undefined) return ''
+      //       var y_tms = Math.pow(2, z) - 1 - y
+      //       return (
+      //         'http://t0.tianditu.gov.cn/img_w/wmts?' +
+      //         'SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0' +
+      //         '&LAYER=img&STYLE=default&TILEMATRIXSET=w' +
+      //         '&FORMAT=image/png' +
+      //         '&TILEMATRIX=' +
+      //         z +
+      //         '&TILEROW=' +
+      //         y +
+      //         '&TILECOL=' +
+      //         x +
+      //         '&tk=' +
+      //         apiKey_td
+      //       )
+      //     }
+      //   })
+      // })
     ],
     view: new View({
-      center: fromLonLat([116.4, 39.9]), // 北京市中心
-      zoom: 4,
-      projection: 'EPSG:3857'
+      center: transform([116.4, 39.9], 'EPSG:4326', 'EPSG:3857'), // 北京市中心
+      zoom: 4
     })
   })
 }
