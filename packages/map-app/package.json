@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
+    "ant-design-vue": "^4.2.6",
     "coordtransform": "^2.1.2",
     "less": "^4.2.2",
     "less-loader": "^12.2.0",
