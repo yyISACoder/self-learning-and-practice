@@ -13,6 +13,7 @@ import { GeoJSON } from 'ol/format'
 import { LineString } from 'ol/geom'
 import { Style, Stroke, Circle, Fill } from 'ol/style'
 import AMapLoader from '@amap/amap-jsapi-loader'
+import { gcj02towgs84 } from 'coordtransform'
 
 let mapInstance
 let trafficLayer = null
@@ -20,6 +21,7 @@ let AMap
 const apiKey_td = '3e3059b01c5c4199fb64f898f30a9c1c'
 const apiKey_gd_js = '809705cb81ca6b60e5e56f4db505e275'
 const apiKey_gd_web = 'b2ea870bf7fbc6c05e8c847114d13ffb'
+const gaodeTileUrl = `https://webrd04.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=7&x={x}&y={y}&z={z}&key=${apiKey_gd_web}`
 
 onMounted(async () => {
   //await initGDMap()
@@ -69,10 +71,17 @@ function initMap() {
       new VectorLayer({
         opacity: 1,
         source: new VectorSource({
-          url: '../assets/json/中华人民共和国.json', // GeoJSON文件路径
-          format: new GeoJSON()
+          url: 'https://geo.datav.aliyun.com/areas_v3/bound/geojson?code=100000_full', // GeoJSON文件路径
+          format: new GeoJSON(),
+          projection: 'EPSG:3857'
         })
       })
+      // new Tile({
+      //   source: new XYZ({
+      //     url: gaodeTileUrl,
+      //     wrapX: false
+      //   })
+      // })
       // new Tile({
       //   source: new XYZ({
       //     wrapX: false,
@@ -132,7 +141,8 @@ function initMap() {
     ],
     view: new View({
       center: transform([116.4, 39.9], 'EPSG:4326', 'EPSG:3857'), // 北京市中心
-      zoom: 4
+      zoom: 4,
+      projection: 'EPSG:3857'
     })
   })
 }

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
+    "coordtransform": "^2.1.2",
     "less": "^4.2.2",
     "less-loader": "^12.2.0",
     "ol": "^10.5.0",
