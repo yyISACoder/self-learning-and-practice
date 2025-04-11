@@ -14,7 +14,7 @@ import XYZ from 'ol/source/XYZ'
 import ImageStatic from 'ol/source/ImageStatic'
 import ImageLayer from 'ol/layer/Image'
 import VectorSource from 'ol/source/Vector'
-import { fromLonLat, transform } from 'ol/proj'
+import { fromLonLat, transform, toLonLat } from 'ol/proj'
 import VectorLayer from 'ol/layer/Vector'
 import { GeoJSON } from 'ol/format'
 import { LineString, Point } from 'ol/geom'
@@ -22,6 +22,7 @@ import { Style, Stroke, Circle, Fill } from 'ol/style'
 import AMapLoader from '@amap/amap-jsapi-loader'
 import { gcj02towgs84 } from 'coordtransform'
 import { Button } from 'ant-design-vue'
+import Overlay from 'ol/Overlay'
 
 let mapInstance
 let trafficLayer = null
@@ -45,13 +46,24 @@ async function initGDMap() {
   })
 }
 function initMap() {
+  const vectorLayer = new VectorLayer({
+    source: new VectorSource(),
+    style: new Style({
+      image: new Circle({
+        radius: 6,
+        fill: new Fill({ color: 'blue' }),
+        stroke: new Stroke({ color: 'white', width: 2 })
+      })
+    })
+  })
   const layers = [
     new Tile({
       source: new XYZ({
         url: gaodeTileUrl,
         wrapX: false
       })
-    })
+    }),
+    vectorLayer
     // new Tile({
     //   source: new XYZ({
     //     wrapX: false,
@@ -176,6 +188,24 @@ function initMap() {
       })
     ]
   })
+  // 创建弹窗
+  const popup = new Overlay({
+    element: document.getElementById('popup'), // HTML弹窗容器
+    positioning: 'bottom-center',
+    stopEvent: false // 允许事件穿透
+  })
+  mapInstance.addOverlay(popup)
+  // 绑定点击事件
+  mapInstance.on('click', (event) => {
+    popup.setPosition(event.coordinate)
+    console.log(event)
+    const coordinate = event.coordinate // 点击坐标（EPSG:3857）
+    const lonLat = toLonLat(coordinate) // 转换为 WGS84（EPSG:4326）
+    const marker = new Feature({
+      geometry: new Point(event.coordinate)
+    })
+    vectorLayer.getSource().addFeature(marker)
+  })
 }
 function drawUserLocation(lon, lat, accuracy) {
   // 转换经纬度到地图坐标系（EPSG:3857）
@@ -284,10 +314,16 @@ function onGetLocation() {
       <Button type="primary" @click="onGetLocation">获取当前位置</Button>
     </div>
     <div id="mapContainer" class="map-container"></div>
+    <div id="popup" class="map-popup"></div>
   </div>
 </template>
 
 <style scoped lang="less">
+.map-popup {
+  width: 300px;
+  height: 300px;
+  background-color: #fff;
+}
 .wrapper {
   width: 100vw;
   height: 100vh;
