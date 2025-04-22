@@ -45,15 +45,20 @@ onMounted(() => {
   //   scene.background = texture
   //   scene.environment = texture
   // })
-  // const gltfLoader = new GLTFLoader()
-  // gltfLoader.load(
-  //   '../../public/superman 超人 带动画_爱给网_aigei_com/scene.gltf',
-  //   (gltf) => {
-  //     const model = gltf.scene
-  //     model.position.set(2, 0, 0)
-  //     scene.add(model)
-  //   }
-  // )
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
+  directionalLight.position.set(3, 3, 3)
+  scene.add(directionalLight)
+
+  const gltfLoader = new GLTFLoader()
+  gltfLoader.load(
+    '../../public/superman 超人 带动画_爱给网_aigei_com/scene.gltf',
+    (gltf) => {
+      debugger
+      const model = gltf.scene
+      model.position.set(3, 3, 3)
+      scene.add(model)
+    }
+  )
   const ball1 = new THREE.Mesh(
     new THREE.SphereGeometry(0.5, 32, 32),
     new THREE.MeshBasicMaterial({ color: 0x00ff00 })
@@ -92,7 +97,7 @@ onMounted(() => {
     }
   })
 
-  scene.add(ball1, ball2, ball3)
+  //scene.add(ball1, ball2, ball3)
 
   // scene.add(plane)
   scene.add(axisHelper)
